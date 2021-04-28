@@ -10,16 +10,15 @@ async function getNextMessage() {
     return '\"' + json.slip.advice + '\"';
 }
 
-async function setNewQuote() {
+async function setQuote() {
     quote_text.textContent = await getNextMessage();
 }
 
-const quote_panel = document.getElementById('quote');
 const quote_text = document.getElementById('quote_text');
 const next_quote_button = document.getElementById('next_quote');
 
 next_quote_button.addEventListener('click', (event) => {
-    setNewQuote();
+    setQuote();
 });
 
-setNewQuote();
+setQuote();

@@ -19,7 +19,7 @@ async function setForecast() {
 
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${data.main.temp}°C`;
-    weatherDescription.textContent = data.weather[0].description;
+    forecastDesc.textContent = data.weather[0].description;
     humidity.innerHTML = `${data.main.humidity}%`;
     wind.innerHTML = `${data.wind.speed} m/s`;
 }

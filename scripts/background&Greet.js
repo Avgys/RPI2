@@ -9,7 +9,7 @@ let images_names = ['01.jpg', '02.jpg', '03.jpg', '05.jpg',
 ];
 
 function shuffle(array) {
-  array.sort(() => Math.random() - 0.5);
+  array.sort(() => Math.random()*2 - 1);
 }
 
 shuffle(images_names);
