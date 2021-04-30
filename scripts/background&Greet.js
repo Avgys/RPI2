@@ -27,20 +27,6 @@ function showImage(path) {
 
 }
 
-function changeBackgroundImage(cur_day_part) {
-
-  img_index %= images_names.length;
-
-  const images_path = '/assets/images/' + cur_day_part + '/';
-
-  const full_img_path = images_path + images_names[img_index];
-
-  showImage(full_img_path);
-
-  img_index++;
-
-}
-
 let BgTime = new Date();
 
 // Set Background and Greeting
@@ -55,15 +41,15 @@ function showImage(path) {
   const img = new Image();
   img.src = path;
   img.onload = function() {
-
       body.style.backgroundImage = `url(${ path })`;
-
   };
 }
 
 function getDayPart(currHour) {
-
+  // alert(body.style.color);
+  body.style.color = 'black';
   if (currHour >= 6 && currHour < 12) {
+      
       return 'morning';
   } else if (currHour >= 12 && currHour < 18) {
       return 'day';
@@ -98,11 +84,7 @@ setInterval(tryChangeBg, 1000);
 
 let PseudoTimeHour = BgTime.getHours();
 
-function nextDayBackground() {
-
-  PseudoTimeHour++;
-  if(PseudoTimeHour > 24) PseudoTimeHour -= 24;
-  day_part = getDayPart(PseudoTimeHour)
+function changeBackgroundImage(day_part) {
   img_index %= images_names.length;
   const images_path = '/assets/images/' + day_part + '/';
   const full_img_path = images_path + images_names[img_index];
@@ -110,7 +92,15 @@ function nextDayBackground() {
   img_index++;
 }
 
+function nextBackground() {
+
+  PseudoTimeHour++;
+  if(PseudoTimeHour > 24) PseudoTimeHour -= 24;
+  day_part = getDayPart(PseudoTimeHour);
+  changeBackgroundImage(day_part);
+}
+
 const next_img = document.getElementById('change_image');
-next_img.addEventListener('click', nextDayBackground);
+next_img.addEventListener('click', nextBackground);
 
 setBgGreet();
