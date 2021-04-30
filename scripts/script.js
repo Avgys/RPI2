@@ -75,7 +75,7 @@ function setCity(e) {
     if (e.which == 13 || e.keyCode == 13) {
       if(e.target.innerText != ""){
         localStorage.setItem('city', e.target.innerText);
-        setForecast();
+        setForecast(e.target);
         }
         city.blur();
     }
